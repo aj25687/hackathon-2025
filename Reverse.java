@@ -7,6 +7,7 @@ public class Reverse{
         Scanner scan = new Scanner(System.in);
 
         scan.nextLine();
+        String data = "";
 
         System.out.println("reverse"); 
         System.out.println("test"); 
@@ -17,7 +18,7 @@ public class Reverse{
     // try-with-resources: Scanner will be closed automatically
     try (Scanner myReader = new Scanner(myObj)) {
       while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
+        data = myReader.nextLine();
         System.out.println(data);
       }
     } catch (FileNotFoundException e) {
