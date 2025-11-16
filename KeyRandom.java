@@ -1,7 +1,8 @@
 import java.util.Random;
 
 public class KeyRandom {
-    public static void main(String[] args) {
+
+    public String theKey(){
         Random r = new Random();
         String[] key = new String [100];
         String fullKey = "";
@@ -10,9 +11,8 @@ public class KeyRandom {
         for (int i = 0; i < 100; i++){
             key[i] = String.valueOf(r.nextInt(0,1500));
             fullKey += key[i] + ".";
-
         }
         fullKey = fullKey.substring(0, fullKey.length()-1);
-        System.out.println(fullKey);
+        return fullKey;
     }
 }

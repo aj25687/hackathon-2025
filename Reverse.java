@@ -12,15 +12,14 @@ public class Reverse {
         String data = fileScan.useDelimiter("\\A").next(); // read entire file as one token then go to next string
         fileScan.close();
 
-        // read key scanner
-        //TODO make this call key random.java
-        Scanner keyScan = new Scanner(System.in);
-        String keyOG = keyScan.nextLine();
+        KeyRandom keyRandom = new KeyRandom();
+
+        // get the key from keyrandom      
+        String keyOG = keyRandom.theKey();
         String key = (keyOG.substring(keyOG.indexOf(":")+1));
         //System.out.println(key);
         int addToIndex = Integer.parseInt(keyOG.substring(0,keyOG.indexOf(":")));
         //System.out.println(addToIndex);
-        keyScan.close();
 
         // Parse numbers
         String[] parts = key.split("\\."); // split the key w/ delimitor
@@ -41,7 +40,6 @@ public class Reverse {
 
             // safety check so i dont have to deal with exeptions :)
             if (start<=-1 || end>modified.length()) {
-                System.out.print("skiped");
                 continue;
             }
 
