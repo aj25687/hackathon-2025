@@ -35,7 +35,6 @@ public class Reverse{
         dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]);
     }
 
-
     }
 
 }
