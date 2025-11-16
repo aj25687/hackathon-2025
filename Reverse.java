@@ -6,12 +6,7 @@ public class Reverse{
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
 
-        scan.nextLine();
         String data = "";
-
-        System.out.println("reverse"); 
-        System.out.println("test"); 
-        System.out.println("oliver");
 
         File myObj = new File("filename.txt");
 
@@ -36,8 +31,6 @@ public class Reverse{
         dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]+1);
     }
     dotSeperator[49] = key.indexOf(".", dotSeperator[48]);
-    System.out.println("break");
-    System.out.println(dotSeperator[49]);
-    System.out.println(dotSeperator[0]);
+    
     }
 }
