@@ -10,7 +10,7 @@ public class KeyRandom {
             fullKey += key[i] + ".";
 
         }
-        
+        fullKey = fullKey.substring(0, fullKey.length()-1);
         System.out.println(fullKey);
     }
 }
