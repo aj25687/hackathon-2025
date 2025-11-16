@@ -1,47 +1,52 @@
-import java.io.File;                  // Import the File class
-import java.io.FileNotFoundException; // Import this class to handle errors
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-public class Reverse{
 
-    public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
+public class temp {
+    public static void main(String[] args) throws FileNotFoundException {
 
-        String data = "";
+        // Read file
+        Scanner fileScan = new Scanner(new File("filename.txt"));
+        String data = fileScan.useDelimiter("\\A").next(); // read entire file as one string
+        fileScan.close();
 
-        File myObj = new File("filename.txt");
+        // Read key
+        Scanner keyScan = new Scanner(System.in);
+        String key = keyScan.nextLine();
+        keyScan.close();
 
-    // try-with-resources: Scanner will be closed automatically
-    try (Scanner myReader = new Scanner(myObj)) {
-      while (myReader.hasNextLine()) {
-        data = myReader.nextLine();
-        System.out.println(data);
-      }
-    } catch (FileNotFoundException e) {
-      System.out.println("An error occurred.");
-      e.printStackTrace();
-    }
+        // Parse numbers
+        String[] parts = key.split("\\.");
+        List<Integer> indexes = new ArrayList<>();
 
-    Scanner keyScan = new Scanner(System.in);
-
-    String key = keyScan.nextLine();
-    int dotSeperator[] = new int [50];
-    dotSeperator[0] = key.indexOf(".");
-
-    for(int i = 0; i<dotSeperator.length-2; i++){
-        dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]+1);
-    }
-    dotSeperator[49] = key.indexOf(".", dotSeperator[48]);
-    String newData = "";
-    for(int k = 0; k<49; k++){
-        int startIndex = Math.min(dotSeperator[k], dotSeperator[k+1]);
-        int lastIndex = Math.max(dotSeperator[k], dotSeperator[k+1]);
-        int charecters = lastIndex - startIndex;
-        for(int j = lastIndex; j>charecters; j--){
-            newData += data.substring(j, j-1);
+        for (String p : parts) {
+            if (!p.isEmpty()) {
+                indexes.add(Integer.parseInt(p));
+            }
         }
-    }
-    System.out.println(newData);
-    
+
+        // Reverse segments
+        StringBuilder modified = new StringBuilder(data);
+
+        for (int i = 0; i < indexes.size() - 1; i++) {
+            int start = Math.min(indexes.get(i), indexes.get(i+1));
+            int end = Math.max(indexes.get(i), indexes.get(i+1));
+
+            // safety check
+            if (start < 0 || end > modified.length() || start >= end) {
+                System.out.print("skip");
+                continue;
+            }
+
+            String segment = modified.substring(start, end);
+            String reversed = new StringBuilder(segment).reverse().toString();
+
+            // replace in the string
+            modified.replace(start, end, reversed);
+        }
+
+        System.out.println(modified.toString());
     }
 }
-//what this does is the key is 50 numbesr, seperated bt dots. what this is suppost to do is take those numbers and reverse the segments of text that is inbetween those two indexes. so 10.20.30.40 reverses the letters from 10 to 20, then from 20 to 30, then 30 to 40
