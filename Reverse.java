@@ -25,6 +25,17 @@ public class Reverse{
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
+
+    Scanner keyScan = new Scanner(System.in);
+
+    String key = keyScan.nextLine();
+    int dotSeperator[] = new int [50];
+    dotSeperator[0] = key.indexOf(".");
+    for(int i = 0; i<dotSeperator.length; i++){
+        dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]);
+    }
+
+
     }
 
 }
