@@ -19,6 +19,13 @@ public class Reverse {
 
         // get the key from keyrandom      
         String keyOG = keyRandom.theKey();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("theKey"))) {
+            writer.write(keyOG);
+            System.out.println("Go find the key...");
+        } catch (IOException e) {
+            System.err.println("Oopsies:" + e.getMessage());
+        }
+
         String key = (keyOG.substring(keyOG.indexOf(":")+1));
         //System.out.println(key);
         int addToIndex = Integer.parseInt(keyOG.substring(0,keyOG.indexOf(":")));
@@ -42,7 +49,7 @@ public class Reverse {
             int end = Math.max(indexes.get(i), indexes.get(i+1)) + 1+l; //the +1 is just incase start and end end up being the same 
 
             // safety check so i dont have to deal with exeptions :)
-            if (start<=-1 || end>modified.length()) {
+            if (start<0 || end>modified.length()) {
                 continue;
             }
 
@@ -57,7 +64,7 @@ public class Reverse {
         String content = modified.toString();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(content);
-            System.out.println("Sucess!!" + fileName);
+            System.out.println("Sucess!! Encrypted file is in " + fileName);
         } catch (IOException e) {
             System.err.println("Oopsies:" + e.getMessage());
         }
