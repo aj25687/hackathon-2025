@@ -1,0 +1,101 @@
+Make it usable
+
+These are boring but instantly make it feel like a real tool.
+	1.	Command-line args
+Let people run:
+
+java Encrypt input.txt output.txt key.txt
+java Decrypt encrypted.txt decrypted.txt key.txt
+
+	2.	Config file
+Store the key in its own file instead of your KeyRandom class doing magic behind the scenes.
+	3.	Error messages that don’t suck
+Instead of exploding when the indexes go out of bounds, tell the user why their key is invalid.
+
+⸻
+
+Make it safer
+
+You aren’t doing real cryptography but you can still tighten it.
+	4.	Randomize the indexes properly
+Right now your key is whatever KeyRandom spits out.
+You can upgrade that class to:
+
+generate non-overlapping index pairs
+ensure indexes don’t go out of bounds
+add the option for variable number of passes
+	5.	Salt / nonce
+Every encryption generates a new salt and stores it in the header.
+This stops identical texts from producing identical encrypted output.
+	6.	HMAC
+Add a hash of the plaintext or ciphertext so you know if something got corrupted.
+
+⸻
+
+Make it fancy
+
+This is where it gets fun.
+	7.	GUI
+Swing or JavaFX.
+Buttons for Encrypt / Decrypt.
+Open file dialog.
+Progress bar.
+Drag-and-drop text area.
+	8.	Live preview
+While typing, the encryption updates in real time.
+	9.	Hex view
+Show the bytes before and after.
+	10.	Theme support
+Dark mode.
+Purple theme for vibes.
+Matrix green.
+Make it look like a hacker toy.
+
+⸻
+
+Make it bigger
+
+Turn it into a full tool instead of one-off scripts.
+	11.	Support binary files
+Right now it only works on text. Extend it so it can scramble any file by bytes.
+	12.	Multiple algorithms
+Let the user choose:
+
+reverse
+swap pairs
+rotate
+shuffle indices
+	13.	Export the key as QR code
+This is actually cool: encrypt a message, send someone the QR code for the key.
+
+⸻
+
+Make it educational
+
+If this is for school or portfolio:
+	14.	Fully documented code
+Explain algorithm phases
+Add diagrams
+Add a README that explains how the encryption works
+	15.	Benchmarking
+Time how long the encryption takes for large files.
+Pretty trivial but looks professional.
+
+⸻
+
+Make it hardcore
+
+If you want to flex:
+	16.	Multithreading
+Split encryption segments across threads.
+Huge performance boost on large files.
+	17.	Stream-based encryption
+Encrypt line-by-line or chunk-by-chunk without loading the whole file into memory.
+Useful for huge data sets.
+	18.	Plugin system
+Make algorithms pluggable so someone can write:
+
+public class MyCipher implements ScrambleAlgorithm { ... }
+
+and your program can use it.
+
