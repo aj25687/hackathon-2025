@@ -1,6 +1,10 @@
 import java.util.Random;
 
 public class KeyRandom {
+public static void main(String[] args) {
+    //String key = theKey();
+    //System.out.println(key);
+}
 
     public String theKey(){
         Random r = new Random();

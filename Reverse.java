@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Reverse {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void Reversal() throws FileNotFoundException {
 
         // read file
         Scanner fileScan = new Scanner(new File("filename.txt"));
