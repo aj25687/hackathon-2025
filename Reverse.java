@@ -36,7 +36,7 @@ public class Reverse{
         int startIndex = Math.min(dotSeperator[k], dotSeperator[k+1]);
         int lastIndex = Math.max(dotSeperator[k], dotSeperator[k+1]);
         int charecters = lastIndex - startIndex;
-        for(int j = lastIndex; j<charecters; j--){
+        for(int j = lastIndex; j>charecters; j--){
             newData += data.substring(j, j-1);
         }
     }
@@ -44,3 +44,4 @@ public class Reverse{
     
     }
 }
+//what this does is the key is 50 numbesr, seperated bt dots. what this is suppost to do is take those numbers and reverse the segments of text that is inbetween those two indexes. so 10.20.30.40 reverses the letters from 10 to 20, then from 20 to 30, then 30 to 40
