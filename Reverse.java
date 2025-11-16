@@ -31,13 +31,11 @@ public class Reverse{
     String key = keyScan.nextLine();
     int dotSeperator[] = new int [50];
     dotSeperator[0] = key.indexOf(".");
-    System.out.println("test");
 
     for(int i = 0; i<dotSeperator.length-2; i++){
         dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]+1);
-        System.out.println(dotSeperator[i]);
     }
-
+    System.out.println("break");
+    System.out.println(dotSeperator[50]);
     }
-
 }
