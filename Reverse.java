@@ -33,6 +33,7 @@ public class Reverse{
     dotSeperator[0] = key.indexOf(".");
     for(int i = 0; i<dotSeperator.length; i++){
         dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]);
+        System.out.println(dotSeperator[i]);
     }
 
     }
