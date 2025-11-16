@@ -35,7 +35,9 @@ public class Reverse{
     for(int i = 0; i<dotSeperator.length-2; i++){
         dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]+1);
     }
+    dotSeperator[49] = key.indexOf(".", dotSeperator[48]);
     System.out.println("break");
-    System.out.println(dotSeperator[50]);
+    System.out.println(dotSeperator[49]);
+    System.out.println(dotSeperator[0]);
     }
 }
