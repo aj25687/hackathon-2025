@@ -1,5 +1,8 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,6 +53,13 @@ public class Reverse {
             modified.replace(start, end, reversed); //starts at var start, goes till (var) end, replaces that with reversed
         }
         }
-        System.out.println(modified.toString());
+        String fileName = "encrypted.txt";
+        String content = modified.toString();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write(content);
+            System.out.println("Sucess!!" + fileName);
+        } catch (IOException e) {
+            System.err.println("Oopsies:" + e.getMessage());
+        }
     }
 }
