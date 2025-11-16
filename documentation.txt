@@ -1,0 +1,127 @@
+
+import java.io.*;
+Tells Java you want to use classes for reading files.
+
+import java.util.*;
+Tells Java you want to use utility classes like Scanner and ArrayList.
+
+public class Reverse {
+Starts your class. Java forces you to wrap your code in a class.
+
+public static void main(String[] args) throws FileNotFoundException {
+This is the starting point of your program.
+The throws just means “if the file isn’t found, Java can throw an error.”
+
+⸻
+
+Scanner fileScan = new Scanner(new File("filename.txt"));
+Creates a Scanner that reads from the file named filename.txt.
+
+String data = fileScan.useDelimiter("\\A").next();
+This stupid-looking .useDelimiter("\\A") trick means:
+read the entire file as one single string instead of line by line.
+.next() grabs that whole string.
+
+fileScan.close();
+Turns off the file scanner so you don’t leak resources.
+
+⸻
+
+Scanner keyScan = new Scanner(System.in);
+Creates a Scanner that reads from the keyboard.
+
+String key = keyScan.nextLine();
+Reads the whole line the user typed.
+Example: 10.20.30.40
+
+keyScan.close();
+Shuts down the keyboard scanner.
+
+⸻
+
+String[] parts = key.split("\\.");
+Splits the key at every dot.
+So "10.20.30.40" becomes ["10", "20", "30", "40"]
+
+List<Integer> indexes = new ArrayList<>();
+Creates an empty list that will hold the numbers.
+
+⸻
+
+for (String p : parts) {
+Loop through each chunk of the split string like “10” then “20” etc.
+
+if (!p.isEmpty()) {
+Skip empty strings, just in case.
+
+indexes.add(Integer.parseInt(p));
+Turn the string “10” into the number 10 and add it to the list.
+
+} ends the if
+} ends the for loop
+
+⸻
+
+StringBuilder modified = new StringBuilder(data);
+Creates a modifiable string because normal strings can’t be edited.
+
+⸻
+
+for (int i = 0; i < indexes.size() - 1; i++) {
+Loop through the index list pair by pair
+so it uses
+indexes[0] and indexes[1]
+indexes[1] and indexes[2]
+indexes[2] and indexes[3]
+etc.
+
+int start = indexes.get(i);
+This is the starting position of the segment.
+
+int end = indexes.get(i + 1);
+This is the ending position of the segment.
+
+⸻
+
+if (start < 0 || end > modified.length() || start >= end) {
+Safety check.
+If the range is impossible, skip it.
+
+System.out.println("invalid range: " + start + " to " + end);
+Tell the user the range was garbage.
+
+continue;
+Skip to the next segment.
+
+} ends the if
+
+⸻
+
+String segment = modified.substring(start, end);
+Grab the string chunk you want to reverse.
+
+String reversed = new StringBuilder(segment).reverse().toString();
+Reverse that chunk.
+
+⸻
+
+modified.replace(start, end, reversed);
+Put the reversed chunk back into the big string in the same place.
+
+⸻
+
+} end of the for loop
+
+⸻
+
+System.out.println(modified.toString());
+Prints the final modified string.
+
+⸻
+
+} end main
+} end class
+
+⸻
+
+If you want, I can rewrite it even simpler or restructure it visually so it’s easier to see the flow.
