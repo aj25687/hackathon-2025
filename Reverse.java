@@ -23,7 +23,7 @@ public class Reverse {
         keyScan.close();
 
         // Parse numbers
-        String[] parts = key.split("\\."); // split the key w/ delimitor .
+        String[] parts = key.split("\\."); // split the key w/ delimitor
         List<Integer> indexes = new ArrayList<>();
 
         for (String p:parts) {
