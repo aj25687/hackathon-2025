@@ -31,6 +31,16 @@ public class Reverse{
         dotSeperator[i+1] = key.indexOf(".", dotSeperator[i]+1);
     }
     dotSeperator[49] = key.indexOf(".", dotSeperator[48]);
+    String newData = "";
+    for(int k = 0; k<49; k++){
+        int startIndex = Math.min(dotSeperator[k], dotSeperator[k+1]);
+        int lastIndex = Math.max(dotSeperator[k], dotSeperator[k+1]);
+        int charecters = lastIndex - startIndex;
+        for(int j = lastIndex; j<charecters; j--){
+            newData += data.substring(j, j-1);
+        }
+    }
+    System.out.println(newData);
     
     }
 }
