@@ -193,7 +193,6 @@ No size problems.
 RSA does not encrypt large messages.
 It can only encrypt a tiny block, roughly keysize minus padding overhead.
 For 2048 bit RSA, max payload is around 245 bytes.
-This is why your earlier error happened.
 
 RSA is not used for data.
 It’s used for keys.
