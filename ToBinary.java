@@ -85,10 +85,16 @@ public class ToBinary {
         String scrambledFromFile = fileScan.useDelimiter("\\A").next();
         fileScan.close();
 
+        String result = "";
+
         System.out.println("Enter the second password for COMPLETE text:");
         if (scan.nextLine().equals("...Is not chopped!")) {
-            String result = Decrypt.Decrypting(scrambledFromFile);
+            result = Decrypt.Decrypting(scrambledFromFile);
             System.out.println(result);
+            System.out.println("\n\n\n\nStill not fully decoded...\n\n");
+        }
+        if(scan.nextLine().equals("Seriously!!")){
+            System.out.println(Ceaser.Ceaser(result));
         }
     }
 

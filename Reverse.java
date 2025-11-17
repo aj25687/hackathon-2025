@@ -20,7 +20,7 @@ public class Reverse {
     public static String Reversal() throws FileNotFoundException {
 
         // read file
-        Scanner fileScan = new Scanner(new File("filename.txt"));
+        Scanner fileScan = new Scanner(new File("raw.txt"));
         String data = fileScan.useDelimiter("\\A").next(); // read entire file as one token then go to next string
         fileScan.close();
 
@@ -49,7 +49,8 @@ public class Reverse {
                 indexes.add(Integer.parseInt(p));
             }
         }
-
+        //make "data" turn into a ceaser 13 shift
+        data = Ceaser.Ceaser(data);
         // Reverse segments
         StringBuilder modified = new StringBuilder(data); // cuz string builer is easier to modify
         for (int l = 0; l<addToIndex; l++){
