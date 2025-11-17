@@ -8,7 +8,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Reverse {
-    public static void Reversal() throws FileNotFoundException {
+    public static void main(String [] args){
+        try {
+            String content = Reversal();
+            System.out.println("it works");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    public static String Reversal() throws FileNotFoundException {
 
         // read file
         Scanner fileScan = new Scanner(new File("filename.txt"));
@@ -19,7 +28,7 @@ public class Reverse {
 
         // get the key from keyrandom      
         String keyOG = keyRandom.theKey();
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("theKey"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("theKey.txt"))) {
             writer.write(keyOG);
             System.out.println("Go find the key...");
         } catch (IOException e) {
@@ -64,9 +73,10 @@ public class Reverse {
         String content = modified.toString();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(content);
-            System.out.println("Sucess!! Encrypted file is in " + fileName);
+            System.out.println("Layer one complete... " + fileName);
         } catch (IOException e) {
             System.err.println("Oopsies:" + e.getMessage());
         }
+        return content;
     }
 }

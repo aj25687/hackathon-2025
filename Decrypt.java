@@ -8,16 +8,25 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Decrypt {
+    public static void main(String[] args) {
+        try {
+            Scanner fileScan = new Scanner(new File("encrypted.txt"));
+            String data = fileScan.useDelimiter("\\A").next();
+            fileScan.close();
+            String text = Decrypting(data);
+            System.out.println(text);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static String Decrypting(String data) throws FileNotFoundException {
 
         // read encrypted file
-        Scanner fileScan = new Scanner(new File("encrypted.txt"));
-        String data = fileScan.useDelimiter("\\A").next();
-        fileScan.close();
-
+        
         // get key
-        Scanner fileScan2 = new Scanner(new File("theKey"));
+        Scanner fileScan2 = new Scanner(new File("theKey.txt"));
         String keyOG = fileScan2.useDelimiter("\\A").next(); // read entire file as one token then go to next string
         fileScan2.close();
 
@@ -47,12 +56,13 @@ public class Decrypt {
                 modified.replace(start, end, rev);
             }
         }
-
+        //System.out.println(modified.toString());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("decrypted.txt"))) {
             writer.write(modified.toString());
             System.out.println("Sucess! Find the decryted file in decyrpted.txt");
         } catch (IOException e) {
             System.err.println("Write error: " + e.getMessage());
         }
+        return modified.toString();
     }
 }

@@ -19,7 +19,7 @@ import java.security.PublicKey;
 public class ToBinary {
 
     public static void main(String[] args) throws Exception {
-        Reverse.Reversal();
+        String data = Reverse.Reversal();
         Scanner scan = new Scanner(System.in);
 
         // read file
@@ -30,8 +30,8 @@ public class ToBinary {
             e.printStackTrace();
         }
 
-        String data = fileScan.useDelimiter("\\A").next();
-        fileScan.close();
+        //String data = fileScan.useDelimiter("\\A").next();
+        //fileScan.close();
 
         byte[] bytes = data.getBytes();
         StringBuilder binary = new StringBuilder();
@@ -51,7 +51,7 @@ public class ToBinary {
             binary.append(temp);
             binary.append(' ');
         }
-
+        System.out.println("Layer Two Complete...");
         // AES key
         KeyGenerator aesGen = KeyGenerator.getInstance("AES");
         aesGen.init(128);
@@ -90,12 +90,17 @@ public class ToBinary {
             System.err.println("Oopsies:" + e.getMessage());
         }
 
-        System.out.println("Enter the password for the decryted text:");
+        System.out.println("Enter the password for the reversed text:");
         String userPassword = scan.nextLine();
-        if(userPassword.equals("Programming Club")){
+        if(userPassword.equals("Programming Club...")){
             System.out.println(decryptedText);
         }
-        
+        System.out.println("Enter the second password for the complete text:");
+        userPassword = scan.nextLine();
+        if(userPassword.equals("...Is not chopped!")){
+            String text = Decrypt.Decrypting(decryptedText);
+            System.out.println(text);
+        }        
 
     }
 
