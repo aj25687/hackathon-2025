@@ -88,7 +88,7 @@ public class ToBinary {
         String result = "";
 
         System.out.println("Enter the second password for COMPLETE text:");
-        if (scan.nextLine().equals("...Is not chopped!")) {
+        if (scan.nextLine().equals("...Is not chopped and amazing and the best DHS club ever!!!!")) {
             result = Decrypt.Decrypting(scrambledFromFile);
             System.out.println(result);
             System.out.println("\n\n\n\nStill not fully decoded...\n\n");
